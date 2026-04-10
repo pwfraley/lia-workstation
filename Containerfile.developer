@@ -1,5 +1,12 @@
 # Erbt von deiner eigenen Basis
-FROM git.zyata.de/zyata/zyata-workstation:44
+FROM github.com/pwfraley/lia-workstation:44
 
 # Spezifische Pakete für Devloper-Arbeiten
-RUN dnf5 install -y google-inter-fonts libreoffice libreoffice-calc libreoffice-writer libreoffice-draw libreoffice-impress libreoffice-langpack-de libreoffice-opensymbol-fonts libreoffice-pdfimport libreoffice-filters && dnf5 clean all
+RUN dnf5 install -y google-inter-fonts \
+    libreoffice libreoffice-calc libreoffice-writer \
+    libreoffice-draw libreoffice-impress libreoffice-langpack-de \
+    libreoffice-opensymbol-fonts libreoffice-pdfimport libreoffice-filters \
+    && dnf5 clean all
+
+# Wichtig: Den Bootloader/Kernel-Status konsistent halten
+RUN rpm-ostree cleanup -a
