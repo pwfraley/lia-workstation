@@ -1,0 +1,81 @@
+name: Build Container Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-base:
+    name: Build Base Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push base image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Containerfile.base
+          push: true
+          tags: ghcr.io/pwfraley/lia-workstation:44
+
+  build-office:
+    name: Build Office Image
+    needs: build-base
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push office image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Containerfile.office
+          push: true
+          tags: ghcr.io/pwfraley/lia-office-workstation:44
+
+  build-developer:
+    name: Build Developer Image
+    needs: build-base
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push developer image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Containerfile.developer
+          push: true
+          tags: ghcr.io/pwfraley/lia-developer-workstation:44

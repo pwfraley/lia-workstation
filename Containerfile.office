@@ -1,5 +1,5 @@
 # Erbt von deiner eigenen Basis
-FROM github.com/pwfraley/lia-workstation:44
+FROM ghcr.io/pwfraley/lia-workstation:44
 
 # Spezifische Pakete für Office-Arbeiten
 RUN dnf5 install -y google-inter-fonts \
