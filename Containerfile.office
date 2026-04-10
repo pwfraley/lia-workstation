@@ -2,8 +2,7 @@
 FROM ghcr.io/pwfraley/lia-workstation:44
 
 # Spezifische Pakete für Office-Arbeiten
-RUN dnf5 install -y google-inter-fonts \
-    libreoffice libreoffice-calc libreoffice-writer \
+RUN dnf5 install -y libreoffice libreoffice-calc libreoffice-writer \
     libreoffice-draw libreoffice-impress libreoffice-langpack-de \
     libreoffice-opensymbol-fonts libreoffice-pdfimport libreoffice-filters \
     && dnf5 clean all
