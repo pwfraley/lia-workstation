@@ -62,5 +62,9 @@ RUN dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all
 # Optional: Eigene Konfigurationen oder Skripte hinzufügen
 # COPY my-config.conf /etc/my-config.conf
 COPY etc/rpm-ostreed.conf /etc/rpm-ostreed.conf
-RUN systemctl enable rpm-ostreed-automatic.timer
+COPY etc/systemd/system/lia-firstboot.service /etc/systemd/system/lia-firstboot.service
+COPY usr/libexec/lia-firstboot.sh /usr/libexec/lia-firstboot.sh
+RUN chmod +x /usr/libexec/lia-firstboot.sh && \
+    systemctl enable lia-firstboot.service && \
+    systemctl enable rpm-ostreed-automatic.timer
 
