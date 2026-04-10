@@ -9,7 +9,7 @@ RUN dnf5 install -y libvirt virt-manager distrobox \
 RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
     echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | tee /etc/yum.repos.d/vscode.repo > /dev/null && \
     dnf5 check-update && \
-    dnf5 install code && \
+    dnf5 -y install code && \
     dnf5 clean all
 
 RUN dnf5 -y copr enable atim/starship && \
