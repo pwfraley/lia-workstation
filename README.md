@@ -2,6 +2,10 @@
 
 Eine Linux Distribution für alle die nichts mit Computern am Hut haben. Einfach installieren und loslegen.
 
+## Basis
+
+Als Basis für die LIA-Workstation dient Fedora Silverblue.
+
 ## Editionen
 
 ### LIA-Workstation
