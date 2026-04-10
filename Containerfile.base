@@ -45,7 +45,7 @@ RUN git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && \
 
 # Optional: Eigene Konfigurationen oder Skripte hinzufügen
 # COPY my-config.conf /etc/my-config.conf
-RUN systemctl enable netbird
+# RUN systemctl enable netbird
 RUN systemctl enable rpm-ostreed-automatic.timer
 
 # Wichtig: Den Bootloader/Kernel-Status konsistent halten
