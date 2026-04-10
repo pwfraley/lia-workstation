@@ -4,16 +4,17 @@ FROM quay.io/fedora/fedora-silverblue:44
 # Deine gewünschten Pakete installieren
 RUN dnf5 group install -y development-tools && dnf5 clean all
 
-# RUN tee /etc/yum.repos.d/netbird.repo <<EOF
-# [netbird]
-# name=netbird
-# baseurl=https://pkgs.netbird.io/yum/
-# enabled=1
-# gpgcheck=1
-# gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
-# repo_gpgcheck=1
-# EOF
+RUN tee /etc/yum.repos.d/netbird.repo <<EOF
+[netbird]
+name=netbird
+baseurl=https://pkgs.netbird.io/yum/
+enabled=1
+gpgcheck=1
+gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
+repo_gpgcheck=1
+EOF
 
+RUN dnf5 config-manager addrepo --overwrite --from-repofile=/etc/yum.repos.d/netbird.repo && dnf5 clean all
 # RUN dnf5 config-manager addrepo --overwrite --from-repofile=/etc/yum.repos.d/netbird.repo && dnf5 install -y netbird netbird-ui && dnf5 clean all
 
 RUN dnf5 install -y gnome-tweaks fontconfig wget chromium zsh nextcloud-client kitty fastfetch neovim stow cmatrix distrobox gnome-shell-extension-pop-shell gnome-shell-extension-user-theme && dnf5 clean all
