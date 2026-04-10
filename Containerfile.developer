@@ -9,4 +9,4 @@ RUN dnf5 install -y google-inter-fonts \
     && dnf5 clean all
 
 # Wichtig: Den Bootloader/Kernel-Status konsistent halten
-RUN rpm-ostree cleanup -a
+RUN rpm-ostree cleanup -pbmr

@@ -50,4 +50,4 @@ RUN git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && \
 RUN systemctl enable rpm-ostreed-automatic.timer
 
 # Wichtig: Den Bootloader/Kernel-Status konsistent halten
-RUN rpm-ostree cleanup -a
+RUN rpm-ostree cleanup -pbmr
