@@ -1,6 +1,8 @@
 name: Build Container Images
 
 on:
+  schedule:
+    - cron: "05 06,12 * * *" # 06:05am UTC everyday
   push:
     branches:
       - main
