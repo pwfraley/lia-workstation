@@ -54,8 +54,8 @@ RUN dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all
     cd .. && \
     rm -rf AlphabeticalAppGrid@stuarthayhurst && \
     git clone https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git /usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com && \
-    git clone https://github.com/neuromorph/openbar.git /usr/share/gnome-shell/extensions/openbar@neuromorph && \
     glib-compile-schemas /usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com/schemas && \
+    git clone https://github.com/neuromorph/openbar.git /usr/share/gnome-shell/extensions/openbar@neuromorph && \
     dnf5 -y remove meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all && \
     rm -rf /usr/share/gnome-shell/extensions/tmp && \
     dnf5 clean all
