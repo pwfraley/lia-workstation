@@ -55,7 +55,7 @@ RUN dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all
     rm -rf AlphabeticalAppGrid@stuarthayhurst && \
     git clone https://github.com/home-sweet-gnome/dash-to-panel.git && \
     cd dash-to-panel && \
-    make DESTDIR=/ install system && \
+    make DESTDIR=/ install && \
     cd .. && \
     rm -rf dash-to-panel && \
     git clone https://github.com/ubuntu/gnome-shell-extension-appindicator.git && \
