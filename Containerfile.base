@@ -45,7 +45,7 @@ RUN git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && \
     rm -rf Tela-circle-icon-theme
 
 # Install tooling
-RUN dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all && \
+RUN dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all ninja-build && \
     git clone https://github.com/stuarthayhurst/alphabetical-grid-extension.git ./AlphabeticalAppGrid@stuarthayhurst && \
     cd AlphabeticalAppGrid@stuarthayhurst && \
     make build && \
@@ -58,10 +58,15 @@ RUN dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all
     make DESTDIR=/ install system && \
     cd .. && \
     rm -rf dash-to-panel && \
+    git clone https://github.com/ubuntu/gnome-shell-extension-appindicator.git && \
+    meson gnome-shell-extension-appindicator /tmp/g-s-appindicators-build && \
+    ninja -C /tmp/g-s-appindicators-build install && \
+    rm -rf gnome-shell-extension-appindicator && \
+    rm -rf /tmp/g-s-appindicators-build && \
     git clone https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git /usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com && \
     glib-compile-schemas /usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com/schemas && \
     git clone https://github.com/neuromorph/openbar.git /usr/share/gnome-shell/extensions/openbar@neuromorph && \
-    dnf5 -y remove meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all && \
+    dnf5 -y remove meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all ninja-build && \
     rm -rf /usr/share/gnome-shell/extensions/tmp && \
     dnf5 clean all
 
