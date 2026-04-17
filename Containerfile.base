@@ -53,6 +53,11 @@ RUN dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all
     glib-compile-schemas /usr/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/schemas && \
     cd .. && \
     rm -rf AlphabeticalAppGrid@stuarthayhurst && \
+    git clone https://github.com/home-sweet-gnome/dash-to-panel.git && \
+    cd dash-to-panel && \
+    make DESTDIR=/ install system && \
+    cd .. && \
+    rm -rf dash-to-panel && \
     git clone https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git /usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com && \
     glib-compile-schemas /usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com/schemas && \
     git clone https://github.com/neuromorph/openbar.git /usr/share/gnome-shell/extensions/openbar@neuromorph && \
