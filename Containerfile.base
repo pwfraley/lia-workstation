@@ -59,6 +59,7 @@ RUN dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all
     cd .. && \
     rm -rf dash-to-panel && \
     git clone https://github.com/ubuntu/gnome-shell-extension-appindicator.git && \
+    meson setup build --prefix=/usr && \
     meson gnome-shell-extension-appindicator /tmp/g-s-appindicators-build && \
     ninja -C /tmp/g-s-appindicators-build install && \
     rm -rf gnome-shell-extension-appindicator && \
