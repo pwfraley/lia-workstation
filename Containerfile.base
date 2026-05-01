@@ -25,6 +25,8 @@ COPY usr/share/fonts/JetBrainsMonoNerdFont /usr/share/fonts/
 RUN fc-cache -f
 
 COPY etc/skel/.config /etc/skel/
+COPY etc/skel/.zshrc /etc/skel/
+RUN tar -xf files/oh-my-zsh.tgz -C /etc/skel
 
 RUN dnf5 install -y cabextract && \
     mkdir -p /usr/share/fonts/microsoft && \
