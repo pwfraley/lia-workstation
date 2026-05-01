@@ -13,8 +13,7 @@ gpgcheck=1
 gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
 repo_gpgcheck=1
 EOF
-
-RUN dnf5 config-manager addrepo --overwrite --from-repofile=/etc/yum.repos.d/netbird.repo && dnf5 clean all
+dnf5 config-manager addrepo --overwrite --from-repofile=/etc/yum.repos.d/netbird.repo && dnf5 clean all
 
 RUN dnf5 install -y gnome-tweaks fontconfig wget chromium zsh atuin-all-users.noarch nextcloud-client syncthing kitty fastfetch neovim stow cmatrix distrobox gnome-shell-extension-pop-shell gnome-shell-extension-user-theme && dnf5 clean all
 
@@ -62,6 +61,7 @@ RUN dnf5 group install -y development-tools && dnf5 -y install meson glib2-devel
     dnf5 -y remove meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all ninja-build && \
     rm -rf /usr/share/gnome-shell/extensions/tmp && \
     dnf5 group remove -y development-tools && \
+    dnf5 autoremove -y && \
     dnf5 clean all
 
 # Optional: Eigene Konfigurationen oder Skripte hinzufügen
