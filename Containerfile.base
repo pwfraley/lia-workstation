@@ -20,15 +20,6 @@ RUN dnf5 config-manager addrepo --overwrite --from-repofile=/etc/yum.repos.d/net
 # RUN dnf5 install -y epel-release && dnf5 install -y gnome-tweaks fontconfig wget chromium zsh starship atuin-all-users.noarch nextcloud-client kitty fastfetch neovim stow cmatrix distrobox gnome-shell-extension-pop-shell gnome-shell-extension-user-theme && dnf5 clean all
 RUN dnf5 install -y gnome-tweaks fontconfig wget chromium zsh atuin-all-users.noarch nextcloud-client syncthing kitty fastfetch neovim stow cmatrix distrobox gnome-shell-extension-pop-shell gnome-shell-extension-user-theme && dnf5 clean all
 
-COPY usr/share/fonts/AdwaitaMonoNerdFont /usr/share/fonts/
-COPY usr/share/fonts/JetBrainsMonoNerdFont /usr/share/fonts/
-RUN fc-cache -f
-
-COPY etc/skel/.config /etc/skel/
-COPY etc/skel/.zshrc /etc/skel/
-COPY files/oh-my-zsh.tgz /etc/skel/
-RUN tar -xf /etc/skel/oh-my-zsh.tgz && rm /etc/skel/oh-my-zsh.tgz
-
 RUN dnf5 install -y cabextract && \
     mkdir -p /usr/share/fonts/microsoft && \
     # Hier werden die Fonts geladen und entpackt
@@ -82,6 +73,15 @@ RUN dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all
 
 # Optional: Eigene Konfigurationen oder Skripte hinzufügen
 # COPY my-config.conf /etc/my-config.conf
+COPY usr/share/fonts/AdwaitaMonoNerdFont /usr/share/fonts/
+COPY usr/share/fonts/JetBrainsMonoNerdFont /usr/share/fonts/
+RUN fc-cache -f
+
+COPY etc/skel/.config /etc/skel/
+COPY etc/skel/.zshrc /etc/skel/
+COPY files/oh-my-zsh.tgz /etc/skel/
+RUN tar -xf /etc/skel/oh-my-zsh.tgz && rm /etc/skel/oh-my-zsh.tgz
+
 COPY etc/rpm-ostreed.conf /etc/rpm-ostreed.conf
 COPY etc/systemd/system/lia-firstboot.service /etc/systemd/system/lia-firstboot.service
 COPY usr/libexec/lia-firstboot.sh /usr/libexec/lia-firstboot.sh
