@@ -2,7 +2,7 @@
 FROM quay.io/fedora/fedora-silverblue:44
 
 # Deine gewünschten Pakete installieren
-RUN dnf5 group install -y development-tools && dnf5 clean all
+# RUN dnf5 group install -y development-tools && dnf5 clean all
 
 RUN tee /etc/yum.repos.d/netbird.repo <<EOF
 [netbird]
@@ -15,9 +15,7 @@ repo_gpgcheck=1
 EOF
 
 RUN dnf5 config-manager addrepo --overwrite --from-repofile=/etc/yum.repos.d/netbird.repo && dnf5 clean all
-# RUN dnf5 config-manager addrepo --overwrite --from-repofile=/etc/yum.repos.d/netbird.repo && dnf5 install -y netbird netbird-ui && dnf5 clean all
 
-# RUN dnf5 install -y epel-release && dnf5 install -y gnome-tweaks fontconfig wget chromium zsh starship atuin-all-users.noarch nextcloud-client kitty fastfetch neovim stow cmatrix distrobox gnome-shell-extension-pop-shell gnome-shell-extension-user-theme && dnf5 clean all
 RUN dnf5 install -y gnome-tweaks fontconfig wget chromium zsh atuin-all-users.noarch nextcloud-client syncthing kitty fastfetch neovim stow cmatrix distrobox gnome-shell-extension-pop-shell gnome-shell-extension-user-theme && dnf5 clean all
 
 RUN dnf5 install -y cabextract && \
@@ -28,25 +26,17 @@ RUN dnf5 install -y cabextract && \
     cabextract -d /usr/share/fonts/microsoft $font && \
     rm $font; \
     done && \
-    # Jetzt entfernen wir das Werkzeug wieder im GLEICHEN Layer
     dnf5 remove -y cabextract && \
     dnf5 clean all && \
-    # Font-Cache aktualisieren
     fc-cache -f
 
-# RUN dnf5 -y copr enable che/nerd-fonts && \
-#     dnf5 -y install nerd-fonts && \
-#     dnf5 clean all
-
-# Tela-Circle-Icons
-RUN git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && \
+# Install tooling
+RUN dnf5 group install -y development-tools && dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all ninja-build && \
+    git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && \
     cd Tela-circle-icon-theme && \
     ./install.sh -a -d /usr/share/icons/ && \
     cd .. && \
-    rm -rf Tela-circle-icon-theme
-
-# Install tooling
-RUN dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all ninja-build && \
+    rm -rf Tela-circle-icon-theme && \
     git clone https://github.com/stuarthayhurst/alphabetical-grid-extension.git ./AlphabeticalAppGrid@stuarthayhurst && \
     cd AlphabeticalAppGrid@stuarthayhurst && \
     make build && \
@@ -65,10 +55,13 @@ RUN dnf5 -y install meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all
     rm -rf gnome-shell-extension-appindicator && \
     rm -rf /tmp/g-s-appindicators-build && \
     git clone https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git /usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com && \
+    rm -rf /usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com/.git && \
     glib-compile-schemas /usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com/schemas && \
     git clone https://github.com/neuromorph/openbar.git /usr/share/gnome-shell/extensions/openbar@neuromorph && \
+    rm -rf /usr/share/gnome-shell/extensions/openbar@neuromorph/.git && \
     dnf5 -y remove meson glib2-devel sassc cmake dbus-devel 7zip-standalone-all ninja-build && \
     rm -rf /usr/share/gnome-shell/extensions/tmp && \
+    dnf5 group remove -y development-tools && \
     dnf5 clean all
 
 # Optional: Eigene Konfigurationen oder Skripte hinzufügen
@@ -79,8 +72,7 @@ RUN fc-cache -f
 
 COPY etc/skel/.config /etc/skel/
 COPY etc/skel/.zshrc /etc/skel/
-COPY files/oh-my-zsh.tgz /etc/skel/
-RUN tar -xf /etc/skel/oh-my-zsh.tgz && rm /etc/skel/oh-my-zsh.tgz
+ADD files/oh-my-zsh.tgz /etc/skel/
 
 COPY etc/rpm-ostreed.conf /etc/rpm-ostreed.conf
 COPY etc/systemd/system/lia-firstboot.service /etc/systemd/system/lia-firstboot.service

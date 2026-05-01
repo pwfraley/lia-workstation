@@ -31,6 +31,8 @@ jobs:
           file: Containerfile.base
           push: true
           tags: ghcr.io/pwfraley/lia-workstation:44
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   build-office:
     name: Build Office Image
@@ -56,6 +58,8 @@ jobs:
           file: Containerfile.office
           push: true
           tags: ghcr.io/pwfraley/lia-office-workstation:44
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   build-developer:
     name: Build Developer Image
@@ -81,3 +85,5 @@ jobs:
           file: Containerfile.developer
           push: true
           tags: ghcr.io/pwfraley/lia-developer-workstation:44
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
