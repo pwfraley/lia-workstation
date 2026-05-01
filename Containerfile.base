@@ -24,6 +24,8 @@ COPY usr/share/fonts/AdwaitaMonoNerdFont /usr/share/fonts/
 COPY usr/share/fonts/JetBrainsMonoNerdFont /usr/share/fonts/
 RUN fc-cache -f
 
+COPY etc/skel/.config /etc/skel/
+
 RUN dnf5 install -y cabextract && \
     mkdir -p /usr/share/fonts/microsoft && \
     # Hier werden die Fonts geladen und entpackt
