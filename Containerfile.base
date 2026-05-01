@@ -71,8 +71,8 @@ COPY usr/share/fonts/AdwaitaMonoNerdFont /usr/share/fonts/
 COPY usr/share/fonts/JetBrainsMonoNerdFont /usr/share/fonts/
 RUN fc-cache -f
 
-COPY etc/skel/.config /etc/skel/
-COPY etc/skel/.zshrc /etc/skel/
+ADD etc/skel/.config /etc/skel/
+ADD etc/skel/.zshrc /etc/skel/
 ADD files/oh-my-zsh.tgz /etc/skel/
 
 COPY etc/rpm-ostreed.conf /etc/rpm-ostreed.conf
