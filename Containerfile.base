@@ -17,7 +17,7 @@ EOF
 RUN dnf5 config-manager addrepo --overwrite --from-repofile=/etc/yum.repos.d/netbird.repo && dnf5 clean all
 # RUN dnf5 config-manager addrepo --overwrite --from-repofile=/etc/yum.repos.d/netbird.repo && dnf5 install -y netbird netbird-ui && dnf5 clean all
 
-RUN dnf5 install epel-release && dnf5 install -y gnome-tweaks fontconfig wget chromium zsh starship atuin-all-users.noarch nextcloud-client kitty fastfetch neovim stow cmatrix distrobox gnome-shell-extension-pop-shell gnome-shell-extension-user-theme && dnf5 clean all
+RUN dnf5 install -y epel-release && dnf5 install -y gnome-tweaks fontconfig wget chromium zsh starship atuin-all-users.noarch nextcloud-client kitty fastfetch neovim stow cmatrix distrobox gnome-shell-extension-pop-shell gnome-shell-extension-user-theme && dnf5 clean all
 
 COPY usr/share/fonts/AdwaitaMonoNerdFont /usr/share/fonts/
 COPY usr/share/fonts/JetBrainsMonoNerdFont /usr/share/fonts/
