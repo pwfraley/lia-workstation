@@ -70,13 +70,13 @@
 
 #dash .dash-item-container .app-well-app-running-dot,
 #dash .dash-item-container .app-grid-running-dot {
-  background-color: #1abc9c;
+  background-color: #7e9cd8;
 }
 
 /* Tiled window previews */
 .tile-preview {
-  background-color: rgba(26, 188, 156, 0.5);
-  border: 1px solid #1abc9c;
+  background-color: rgba(126, 156, 216, 0.5);
+  border: 1px solid #7e9cd8;
 }
 
 /* Overview stuff */
@@ -151,7 +151,7 @@
 }
 
 .app-grid-running-dot {
-  background-color: #1abc9c;
+  background-color: #7e9cd8;
 }
 
 .arcmenu-button {
@@ -165,7 +165,7 @@
 }
 
 .workspace-thumbnail-indicator {
-  border: 3px solid #1abc9c;
+  border: 3px solid #7e9cd8;
 }
 
 .event-time {
@@ -173,7 +173,7 @@
 }
 
 .cycler-highlight {
-  border: 5px solid #1abc9c;
+  border: 5px solid #7e9cd8;
 }
 
 .switcher-list .item-box {
@@ -200,7 +200,7 @@
 }
 
 .screenshot-ui-capture-button:cast .screenshot-ui-capture-button-circle {
-  background-color: #1abc9c;
+  background-color: #7e9cd8;
 }
 
 .screenshot-ui-show-pointer-button, .screenshot-ui-type-button {
@@ -221,15 +221,15 @@
 }
 
 .screenshot-ui-window-selector-window:hover .screenshot-ui-window-selector-window-border {
-  border-color: rgba(26, 188, 156, 0.5);
+  border-color: rgba(126, 156, 216, 0.5);
 }
 
 .screenshot-ui-window-selector-window:checked .screenshot-ui-window-selector-window-border {
-  border-color: #1abc9c;
+  border-color: #7e9cd8;
 }
 
 .screenshot-ui-window-selector-window:checked .screenshot-ui-window-selector-check {
-  background-color: #1abc9c;
+  background-color: #7e9cd8;
   color: #1a1b26;
 }
 
@@ -367,7 +367,7 @@ StEntry:focus {
 }
 
 .quick-toggle:checked {
-  background-color: #1abc9c !important;
+  background-color: #7e9cd8 !important;
   color: #1a1b26 !important;
 }
 
@@ -390,7 +390,7 @@ StEntry:focus {
 }
 
 .quick-toggle.button:checked:hover {
-  background-color: #1abc9c !important;
+  background-color: #7e9cd8 !important;
   box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
   color: #1a1b26 !important;
 }
@@ -414,7 +414,7 @@ StEntry:focus {
 }
 
 .quick-toggle-has-menu .quick-toggle-menu-button:checked {
-  background-color: #1abc9c !important;
+  background-color: #7e9cd8 !important;
   color: #1a1b26 !important;
 }
 
@@ -424,7 +424,7 @@ StEntry:focus {
 }
 
 .quick-toggle-has-menu .quick-toggle-menu-button:checked:active {
-  background-color: #1abc9c !important;
+  background-color: #7e9cd8 !important;
   color: #1a1b26 !important;
 }
 
@@ -435,7 +435,7 @@ StEntry:focus {
 .slider {
   color: #a9b1d6;
   -barlevel-background-color: #282a38;
-  -barlevel-active-background-color: #1abc9c;
+  -barlevel-active-background-color: #7e9cd8;
 }
 
 .quick-toggle-menu-button.icon-button:last-child > StIcon {
@@ -499,7 +499,7 @@ StEntry:focus {
 }
 
 .quick-toggle-menu .header .icon.active {
-  background-color: #1abc9c !important;
+  background-color: #7e9cd8 !important;
   color: #1a1b26 !important;
 }
 
@@ -652,7 +652,7 @@ StEntry:focus {
 }
 
 .notification-button:hover {
-    background-color: #1abc9c;
+    background-color: #7e9cd8;
     color: #1a1b26;
 }
 
@@ -668,7 +668,7 @@ StEntry:focus {
 
 .message-expand-button:hover {
     color: #1a1b26;
-    background-color: #1abc9c;
+    background-color: #7e9cd8;
 }
 
 .datemenu-today-button {
@@ -715,7 +715,7 @@ StEntry:focus {
   color: #a9b1d6;
   -barlevel-height: 2px;
   -barlevel-background-color: #282a38;
-  -barlevel-active-background-color: #1abc9c;
+  -barlevel-active-background-color: #7e9cd8;
   -barlevel-overdrive-color: #f7768e;
   -barlevel-overdrive-separator-width: 2px;
   -barlevel-border-width: 0;
@@ -743,7 +743,7 @@ StEntry:focus {
 }
 
 .toggle-switch:checked {
-  background-color: #1abc9c;
+  background-color: #7e9cd8;
 }
 
 .message {
@@ -761,7 +761,7 @@ StEntry:focus {
 }
 
 .message-close-button {
-  background-color: #1abc9c;
+  background-color: #7e9cd8;
   color: #282a38;
 }
 
@@ -774,7 +774,7 @@ StEntry:focus {
 }
 
 .message-media-control:hover, .message-media-control:focus {
-  background-color: #1abc9c;
+  background-color: #7e9cd8;
   color: #1a1b26;
 }
 
@@ -787,7 +787,7 @@ StEntry:focus {
 .modal-dialog .modal-dialog-button-box .modal-dialog-button:hover, .lg-obj-inspector-button:hover, #LookingGlassDialog > #Toolbar .lg-toolbar-button:hover, .candidate-page-button:hover, .icon-button.flat:hover, .message .message-header .flat.message-expand-button:hover,
 .message .message-header .flat.message-close-button:hover, .message-notification-group .flat.message-collapse-button:hover, .button.flat:hover, .popup-menu .button:hover {
   color: #1a1b26;
-  background-color: #1abc9c;
+  background-color: #7e9cd8;
 }
 
 .modal-dialog {

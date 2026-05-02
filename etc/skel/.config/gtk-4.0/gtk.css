@@ -129,5 +129,5 @@ windowcontrols.end:not(.rewaita-display) > button.close > image {
    border-radius: 5px;
 }
 
-@define-color accent_bg_color #1abc9c;
+@define-color accent_bg_color #7e9cd8;
 @define-color accent_fg_color @window_bg_color;
