@@ -71,9 +71,16 @@ COPY usr/share/fonts/AdwaitaMonoNerdFont /usr/share/fonts/
 COPY usr/share/fonts/JetBrainsMonoNerdFont /usr/share/fonts/
 RUN fc-cache -f
 
-COPY etc/skel/.config /etc/skel/
+RUN mkdir /etc/skel/.config
+ADD etc/skel/.config/fastfetch /etc/skel/.config/
+ADD etc/skel/.config/gtk-4.0 /etc/skel/.config/
+ADD etc/skel/.config/gtk-3.0 /etc/skel/.config/
+ADD etc/skel/.config/kitty /etc/skel/.config/
+ADD etc/skel/.config/starship.toml /etc/skel/.config/
 ADD etc/skel/.zshrc /etc/skel/
 ADD files/oh-my-zsh.tgz /etc/skel/
+RUN mkdir /etc/skel/.local/share/themes/rewaita/gnome-shell
+ADD etc/skel/.local/share/themes/rewaita/gnome-shell/gnome-shell.css /etc/skel/.local/share/themes/rewaita/gnome-shell/
 
 COPY etc/rpm-ostreed.conf /etc/rpm-ostreed.conf
 COPY etc/systemd/system/lia-firstboot.service /etc/systemd/system/lia-firstboot.service
