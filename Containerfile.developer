@@ -3,7 +3,7 @@ FROM ghcr.io/pwfraley/lia-workstation:44
 
 # Spezifische Pakete für Devloper-Arbeiten
 RUN dnf5 install -y libvirt virt-manager distrobox \
-    dotnet-sdk-10.0 just podman-compose podman-docker && \
+    dotnet-sdk-10.0 just podman podman-compose podman-docker && \
     dnf5 clean all
 
 RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
