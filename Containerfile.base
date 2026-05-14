@@ -82,6 +82,7 @@ COPY usr/share/fonts/AdwaitaMonoNerdFont /usr/share/fonts/
 COPY usr/share/fonts/JetBrainsMonoNerdFont /usr/share/fonts/
 RUN fc-cache -f
 
+COPY etc/sysctl.d/90-inotify-max-user-watches.conf /etc/sysctl.d/
 COPY etc/skel/.config /etc/skel/.config
 COPY etc/skel/.local /etc/skel/.local
 COPY etc/skel/.zshrc /etc/skel/
