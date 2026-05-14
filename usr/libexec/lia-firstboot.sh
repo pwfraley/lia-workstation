@@ -12,7 +12,18 @@ flatpak install -y --system flathub \
     io.github.kolunmi.Bazaar \
     io.github.linx_systems.ClamUI \
     org.gnome.Evolution \
-    org.gnome.World.Secrets
+    org.gnome.World.Secrets \
+    org.libreoffice.LibreOffice \
+    org.onlyoffice.desktopeditors \
+    org.gnome.Evolution \
+    io.github.seadve.Kooha \
+    com.obsproject.Studio \
+    com.obsproject.Studio.Plugin.GStreamerVaapi \
+    com.obsproject.Studio.Plugin.Gstreamer \
+    io.github.alainm23.planify \
+    org.gnome.World.Iotas \
+    io.github.swordpuffin.rewaita \
+
 
 # Markierung setzen, damit der Dienst beim nächsten Boot nicht erneut läuft
 touch /var/lib/lia-firstboot.done
