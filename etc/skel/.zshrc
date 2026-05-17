@@ -104,4 +104,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export TERM=xterm-256color
 
+eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
