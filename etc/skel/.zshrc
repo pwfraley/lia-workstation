@@ -104,5 +104,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export TERM=xterm-256color
 
+# EZA ls aliases
+alias ls="eza --icons"
+alias ll="eza -lh --icons"
+alias la="eza -lah --icons --git"
+alias tree="eza --tree --icons --level 2"
+
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
