@@ -10,15 +10,17 @@ $character"""
 
 right_format = """
 $nodejs\
+$package\
+$python\
 """
 
 add_newline = false
 palette = "everforest"
 
 [os]
-disabled = false
+disabled = true
 format = '[$symbol ]($style)'
-style = 'fg:grey2'
+style = 'fg:blue'
 
 [os.symbols]
 Windows = "󰍲"
@@ -57,7 +59,7 @@ style = "fg:orange"
 read_only_style = "fg:orange"
 truncation_length = 3
 truncation_symbol = "…/"
-format = "[ $path]($style)[$read_only]($read_only_style) "
+format = "[$path]($style)[$read_only]($read_only_style) "
 
 [git_branch]
 style = "fg:green"
@@ -68,6 +70,11 @@ format = "[$symbol$branch(:$remote_branch)]($style) "
 symbol = ""
 style = "bg:#212736"
 format = '[ $symbol ($version) ]($style)'
+
+[python]
+# Show python version and virtual environment name
+python_binary = ["python3", "python"]
+format = "[(${virtualenv})]($style)"
 
 [character]
 success_symbol = '[](bold green)'
