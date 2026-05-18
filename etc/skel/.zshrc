@@ -109,6 +109,7 @@ alias ls="eza --icons"
 alias ll="eza -lh --icons"
 alias la="eza -lah --icons --git"
 alias tree="eza --tree --icons --level 2"
+compdef eza=ls
 
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
