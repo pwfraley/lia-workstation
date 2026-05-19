@@ -10,6 +10,7 @@ $character"""
 
 right_format = """
 $nodejs\
+$dotnet\
 $package\
 $python\
 """
@@ -75,6 +76,11 @@ format = '[ $symbol ($version) ]($style)'
 # Show python version and virtual environment name
 python_binary = ["python3", "python"]
 format = "[(${virtualenv})]($style)"
+
+[dotnet]
+symbol = '🥅 '
+style = 'green'
+heuristic = false
 
 [character]
 success_symbol = '[](bold green)'
