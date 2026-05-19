@@ -9,7 +9,8 @@ RUN dnf5 install -y podman-compose podman-docker clamd clamav clamav-freshclam e
 # dnf5 install mesa-va-drivers-freeworld -y && \
 
 RUN dnf5 install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && \
-    dnf5 install -y intel-media-driver gstreamer-vaapi libva-utils && \
+    dnf5 check-update && \
+    dnf5 install -y intel-media-driver gstreamer1-vaapi libva-utils && \
     dnf5 swap 'ffmpeg-free' 'ffmpeg' --allowerasing -y && \
     dnf5 install vlc -y && \
     dnf5 clean all
