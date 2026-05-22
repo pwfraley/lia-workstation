@@ -1,11 +1,6 @@
 # Erbt von deiner eigenen Basis
 FROM ghcr.io/pwfraley/lia-workstation:44
 
-RUN dnf5 install -y libreoffice libreoffice-calc libreoffice-writer \
-    libreoffice-draw libreoffice-impress libreoffice-langpack-de \
-    libreoffice-opensymbol-fonts libreoffice-pdfimport libreoffice-filters \
-    && dnf5 clean all
-
 # Spezifische Pakete für Devloper-Arbeiten
 RUN dnf5 install -y libvirt virt-manager distrobox \
     dotnet-sdk-10.0 just && \
@@ -15,7 +10,6 @@ RUN dnf5 group install -y development-tools && dnf5 clean all
 
 RUN curl -fsSL https://pkg.claude-desktop-debian.dev/rpm/claude-desktop.repo -o /etc/yum.repos.d/claude-desktop.repo && \
     dnf5 install claude-desktop -y
-
 
 RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
     echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | tee /etc/yum.repos.d/vscode.repo > /dev/null && \
