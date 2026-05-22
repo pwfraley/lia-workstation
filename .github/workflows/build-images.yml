@@ -2,7 +2,7 @@ name: Build Container Images
 
 on:
   schedule:
-    - cron: "05 06,12 * * *" # 06:05am UTC everyday
+    - cron: "05 04,08,12,16,20 * * *" # 06:05am UTC everyday
   push:
     branches:
       - main
