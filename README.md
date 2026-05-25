@@ -12,10 +12,28 @@ Als Basis für die LIA-Workstation dient Fedora Silverblue.
 
 Die LIA-Workstation ist ein Basis System für generelle Computer nutzung. Es enthält alles was man für die täglichen Aufgaben am Computer braucht.
 
+#### Installation
+
+```bash
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/pwfraley/lia-workstation:44
+```
+
 ### LIA-Office-Workstation
 
 Die LIA-Office-Workstation ist optimiert für die Nutzung als einfacher Bürorechner. Zusätzlich zu der in LIA-Workstation installierten Software sind hier noch Anwendungen dabei die Sie im Büroalltag benötigen.
 
+#### Installation
+
+```bash
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/pwfraley/lia-office-workstation:44
+```
+
 ### LIA-Developer-Workstation
 
 Die LIA-Developer-Workstation richtet sich an Software-Developer. Sie enthält die wichtigsten Tools um Software mit Linux zu entwickeln, egal ob Desktop- oder Webanwendungen. Alles was man zur Softwareentwicklung braucht ist mit an Board.
+
+#### Installation
+
+```bash
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/pwfraley/lia-developer-workstation:44
+```
