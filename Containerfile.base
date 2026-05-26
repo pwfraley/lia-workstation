@@ -102,6 +102,7 @@ COPY etc/sysctl.d/90-inotify-max-user-watches.conf /etc/sysctl.d/
 COPY etc/skel/.config /etc/skel/.config
 COPY etc/skel/.local /etc/skel/.local
 COPY etc/skel/.zshrc /etc/skel/
+COPY etc/skel/.tmux.conf /etc/skel/
 ADD files/oh-my-zsh.tgz /etc/skel/
 
 COPY etc/rpm-ostreed.conf /etc/rpm-ostreed.conf
