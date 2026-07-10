@@ -23,6 +23,7 @@ flatpak install -y --system flathub \
     io.github.alainm23.planify \
     org.gnome.World.Iotas \
     io.github.swordpuffin.rewaita \
+    de.wwwtech.gitte \
 
 
 # Markierung setzen, damit der Dienst beim nächsten Boot nicht erneut läuft
