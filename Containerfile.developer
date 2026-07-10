@@ -3,7 +3,7 @@ FROM ghcr.io/pwfraley/lia-workstation:44
 
 # Spezifische Pakete für Devloper-Arbeiten
 RUN dnf5 install -y libvirt virt-manager distrobox \
-    dotnet-sdk-10.0 just && \
+    dotnet-sdk-10.0 just gcc-c++ && \
     dnf5 clean all
 
 RUN dnf5 group install -y development-tools && dnf5 clean all
