@@ -2,7 +2,7 @@
 FROM quay.io/fedora/fedora-silverblue:44
 
 # Deine gewünschten Pakete installieren
-RUN dnf5 install -y podman-compose podman-docker clamd clamav clamav-freshclam eza tmux htop && dnf5 clean all && systemctl enable clamd@scan && systemctl enable clamav-freshclam.service
+RUN dnf5 install -y podman-compose podman-docker clamd clamav clamav-freshclam eza tmux htop lynx && dnf5 clean all && systemctl enable clamd@scan && systemctl enable clamav-freshclam.service
 
 # dnf5 install gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly gstreamer1-libav -y && \
 # dnf5 upgrade @multimedia --allowerasing -y && \
