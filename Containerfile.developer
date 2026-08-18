@@ -2,7 +2,7 @@
 FROM ghcr.io/pwfraley/lia-workstation:44
 
 # Spezifische Pakete für Devloper-Arbeiten
-RUN dnf5 install -y libvirt virt-manager distrobox \
+RUN dnf5 install -y qemu-kvm libvirt libvirt-daemon-driver-qemu virt-install virt-viewer virt-manager distrobox \
     dotnet-sdk-10.0 just gcc-c++ && \
     dnf5 clean all
 
