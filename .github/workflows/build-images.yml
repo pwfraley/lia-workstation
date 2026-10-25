@@ -8,12 +8,26 @@ on:
       - main
 
 jobs:
-  build-base:
-    name: Build Base Image
+  build:
+    name: Build Images (Fedora ${{ matrix.version }} / ${{ matrix.channel }})
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+    # Ein fehlschlagender testing-Build soll den Workflow nicht rot färben
+    continue-on-error: ${{ matrix.channel == 'testing' }}
+    strategy:
+      # Jede Version baut unabhängig, damit 44-Updates nicht an 45 hängen
+      fail-fast: false
+      matrix:
+        # Jede Version bekommt den Tag :<version> und den gleitenden Tag :<channel>.
+        # Versionswechsel: channel von 45 auf stable setzen, 44 entfernen
+        # bzw. 46 als testing hinzufügen.
+        include:
+          - version: "44"
+            channel: stable
+          - version: "45"
+            channel: testing
     steps:
       - uses: actions/checkout@v6
 
@@ -33,59 +47,26 @@ jobs:
           context: .
           file: Containerfile.base
           push: true
-          tags: ghcr.io/pwfraley/lia-workstation:44
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          build-args: FEDORA_VERSION=${{ matrix.version }}
+          tags: |
+            ghcr.io/pwfraley/lia-workstation:${{ matrix.version }}
+            ghcr.io/pwfraley/lia-workstation:${{ matrix.channel }}
+          cache-from: type=gha,scope=base-${{ matrix.version }}
+          cache-to: type=gha,scope=base-${{ matrix.version }},mode=max
 
-  build-office:
-    name: Build Office Image
-    needs: build-base
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v4
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
+      # Office und Developer bauen auf dem soeben gepushten Basis-Image auf
       - name: Build and push office image
         uses: docker/build-push-action@v7
         with:
           context: .
           file: Containerfile.office
           push: true
-          tags: ghcr.io/pwfraley/lia-office-workstation:44
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-  build-developer:
-    name: Build Developer Image
-    needs: build-base
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v4
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          build-args: FEDORA_VERSION=${{ matrix.version }}
+          tags: |
+            ghcr.io/pwfraley/lia-office-workstation:${{ matrix.version }}
+            ghcr.io/pwfraley/lia-office-workstation:${{ matrix.channel }}
+          cache-from: type=gha,scope=office-${{ matrix.version }}
+          cache-to: type=gha,scope=office-${{ matrix.version }},mode=max
 
       - name: Build and push developer image
         uses: docker/build-push-action@v7
@@ -93,6 +74,9 @@ jobs:
           context: .
           file: Containerfile.developer
           push: true
-          tags: ghcr.io/pwfraley/lia-developer-workstation:44
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          build-args: FEDORA_VERSION=${{ matrix.version }}
+          tags: |
+            ghcr.io/pwfraley/lia-developer-workstation:${{ matrix.version }}
+            ghcr.io/pwfraley/lia-developer-workstation:${{ matrix.channel }}
+          cache-from: type=gha,scope=developer-${{ matrix.version }}
+          cache-to: type=gha,scope=developer-${{ matrix.version }},mode=max

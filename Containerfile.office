@@ -1,5 +1,6 @@
-# Erbt von deiner eigenen Basis
-FROM ghcr.io/pwfraley/lia-workstation:44
+# Erbt von deiner eigenen Basis (gleiche Fedora-Version wie das Basis-Image)
+ARG FEDORA_VERSION=44
+FROM ghcr.io/pwfraley/lia-workstation:${FEDORA_VERSION}
 
 # Spezifische Pakete für Office-Arbeiten
 RUN dnf5 install -y hledger hledger-ui hledger-web fuse fuse-libs

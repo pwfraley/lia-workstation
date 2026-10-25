@@ -1,5 +1,6 @@
-# Basis-Image für Fedora Silverblue 44 Beta
-FROM quay.io/fedora/fedora-silverblue:44
+# Basis-Image für Fedora Silverblue (Version per Build-Arg, Standard: 44)
+ARG FEDORA_VERSION=44
+FROM quay.io/fedora/fedora-silverblue:${FEDORA_VERSION}
 
 # Deine gewünschten Pakete installieren
 RUN dnf5 install -y podman-compose podman-docker clamd clamav clamav-freshclam eza tmux htop lynx && dnf5 clean all && systemctl enable clamd@scan && systemctl enable clamav-freshclam.service

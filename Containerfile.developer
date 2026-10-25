@@ -1,5 +1,6 @@
-# Erbt von deiner eigenen Basis
-FROM ghcr.io/pwfraley/lia-workstation:44
+# Erbt von deiner eigenen Basis (gleiche Fedora-Version wie das Basis-Image)
+ARG FEDORA_VERSION=44
+FROM ghcr.io/pwfraley/lia-workstation:${FEDORA_VERSION}
 
 # Spezifische Pakete für Devloper-Arbeiten
 RUN dnf5 install -y qemu-kvm libvirt libvirt-daemon-driver-qemu virt-install virt-viewer virt-manager distrobox \
